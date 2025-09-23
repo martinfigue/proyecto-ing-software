@@ -1,0 +1,41 @@
+Caso de Uso UC1: solicitud de pedido
+
+Actor Principal: hogar
+
+Actores involucrados e intereses:
+- Hogar: solicitar un pedido a domicilio
+- Conductor: recibir solicitud de pedido con sus detalles
+
+Precondiciones: implementación de mapa y base de datos.
+
+Postcondiciones: debe quedar un registro del pedido en la base de datos y en el dispositivo de ambos actores.
+
+Escenario principal de éxito:
+Paso 1: hogar solicita pedido
+Paso 2: hogar ingresa fecha, hora y dirección de su pedido (además de indicaciones extra de ser necesarias)
+Paso 3: hogar confirma pedido
+
+
+
+
+
+
+
+
+
+
+Caso de uso UC2: ver ubicación
+
+Actor principal: hogar
+
+Actores involucrados e intereses:
+- Hogar: ver ubicación del conductor mientras esté camino al lugar del pedido.
+- Conductor: enviar su ubicación en tiempo real para que el hogar la vea.
+
+Precondiciones: implementación de mapa y solicitud de pedido.
+
+Postcondiciones: el hogar puede ver la ubicación en tiempo real del conductor de su pedido.
+
+Escenario principal de éxito: 
+Paso 1: el hogar accede a su pedido
+Paso 2: se despliega un mapa en la pantalla donde el hogar ve en tiempo real la ubicación del conductor.
