@@ -3,39 +3,45 @@ Caso de Uso UC1: solicitud de pedido
 Actor Principal: hogar
 
 Actores involucrados e intereses:
-- Hogar: solicitar un pedido a domicilio
-- Conductor: recibir solicitud de pedido con sus detalles
+- Hogar: solicitar un pedido a domicilio.
+- API: validar las rutas de los solicitantes.
 
-Precondiciones: implementación de mapa y base de datos.
+Precondiciones: --
 
-Postcondiciones: debe quedar un registro del pedido en la base de datos y en el dispositivo de ambos actores.
+Postcondiciones: queda registro del pedido y su ubicación en la base de datos, la ruta se valida, se envía notificación de validación de pedido.
 
 Escenario principal de éxito:
 Paso 1: hogar solicita pedido
-Paso 2: hogar ingresa fecha, hora y dirección de su pedido (además de indicaciones extra de ser necesarias)
-Paso 3: hogar confirma pedido
+Paso 2: ejecutar caso de uso "ingresar ubicación".
+Paso 3: hogar ingresa fecha y dirección de su pedido (además de indicaciones extra de ser necesarias).
+Paso 4: se ejecuta caso de uso "validar rutas".
+Paso 5: se ejecuta caso de uso "enviar notificación".
+
+Flujos alternativos:
+Paso 4': los datos ingresados no son válidos (dirección que no existe, zona fuera del límite, envío erróneo de datos).
+       - la aplicación los solicita de nuevo los datos hasta que lo requiera el hogar o sea exitoso.
 
 
 
 
 
+Caso de uso UC2: enviar notificación
 
-
-
-
-
-Caso de uso UC2: ver ubicación
-
-Actor principal: hogar
+Actor principal: hogar y conductor.
 
 Actores involucrados e intereses:
-- Hogar: ver ubicación del conductor mientras esté camino al lugar del pedido.
-- Conductor: enviar su ubicación en tiempo real para que el hogar la vea.
+- Hogar: saber el estado de su pedido y de los mensajes del conductor.
+- Conductor: conocer el estado de mensajes del hogar.
 
-Precondiciones: implementación de mapa y solicitud de pedido.
+Precondiciones: hogar tiene una ruta validada o el hogar canceló un pedido, o que se haya recibido por lo menos un chat.
 
-Postcondiciones: el hogar puede ver la ubicación en tiempo real del conductor de su pedido.
+Postcondiciones: se imprime una notificación en interfaz.
 
-Escenario principal de éxito: 
-Paso 1: el hogar accede a su pedido
-Paso 2: se despliega un mapa en la pantalla donde el hogar ve en tiempo real la ubicación del conductor.
+Escenario principal de éxito 1: 
+Paso 1: se envía notificación a hogar de "solicitud de pedido válida".
+
+Escenario principal de éxito 2:
+Paso 1: se envía notificación de cancelación de pedido correcta.
+
+Escenario principal de éxito 3:
+Paso 1: se envía notificación de chat al destinatario.
