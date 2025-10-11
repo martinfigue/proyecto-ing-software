@@ -1,4 +1,4 @@
-Caso de Uso UC1: solicitud de pedido
+Caso de Uso UC1: solitar pedido
 
 Actor Principal: hogar
 
