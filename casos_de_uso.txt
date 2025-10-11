@@ -3,45 +3,46 @@ Caso de Uso UC1: solitar pedido
 Actor Principal: hogar
 
 Actores involucrados e intereses:
-- Hogar: solicitar un pedido a domicilio.
-- API: validar las rutas de los solicitantes.
+- Hogar: Desea solicitar un retiro a domicilio.
+- API: Quiere validar las rutas de los solicitantes.
 
 Precondiciones: --
 
-Postcondiciones: queda registro del pedido y su ubicación en la base de datos, la ruta se valida, se envía notificación de validación de pedido.
+Postcondiciones: Queda registro del retiro y su ubicación en la base de datos, la ruta se valida, se envía notificación de validación del retiro.
 
 Escenario principal de éxito:
-Paso 1: hogar solicita pedido
+Paso 1: hogar solicita retiro
 Paso 2: ejecutar caso de uso "ingresar ubicación".
-Paso 3: hogar ingresa fecha y dirección de su pedido (además de indicaciones extra de ser necesarias).
-Paso 4: se ejecuta caso de uso "validar rutas".
-Paso 5: se ejecuta caso de uso "enviar notificación".
+Paso 3: hogar ingresa fecha y dirección de su retiro (además de indicaciones extra de ser necesarias).
+Paso 4: Sistema ejecuta caso de uso "validar rutas".
+Paso 5: Sistema ejecuta caso de uso "enviar notificación".
 
 Flujos alternativos:
-Paso 4': los datos ingresados no son válidos (dirección que no existe, zona fuera del límite, envío erróneo de datos).
-       - la aplicación los solicita de nuevo los datos hasta que lo requiera el hogar o sea exitoso.
+Paso 1-3': -Si el hogar lo desea, puede cancelar la solicitud.
+Paso 4': -Los datos ingresados no son válidos (dirección que no existe, zona fuera del límite, envío erróneo de datos).
+         -El sistema los solicita de nuevo hasta que sea exitoso o hasta que el hogar deje de intentar.
 
 
 
 
 
-Caso de uso UC2: enviar notificación
+Caso de uso UC2: Enviar notificación
 
-Actor principal: hogar y conductor.
+Actor principal: Hogar y Conductor.
 
 Actores involucrados e intereses:
-- Hogar: saber el estado de su pedido y de los mensajes del conductor.
-- Conductor: conocer el estado de mensajes del hogar.
+- Hogar: Desea saber el estado de su retiro y de los mensajes del conductor.
+- Conductor: Quiere notificar al hogar que se envió mensaje.
 
-Precondiciones: hogar tiene una ruta validada o el hogar canceló un pedido, o que se haya recibido por lo menos un chat.
+Precondiciones: Hogar tiene una ruta validada o el hogar canceló un pedido, o que se haya recibido por lo menos un chat.
 
-Postcondiciones: se imprime una notificación en interfaz.
+Postcondiciones: Se imprime una notificación en interfaz.
 
 Escenario principal de éxito 1: 
-Paso 1: se envía notificación a hogar de "solicitud de pedido válida".
+Paso 1: Se envía notificación a hogar de "solicitud de pedido válida".
 
 Escenario principal de éxito 2:
-Paso 1: se envía notificación de cancelación de pedido correcta.
+Paso 1: Se envía notificación de cancelación de pedido correcta.
 
 Escenario principal de éxito 3:
-Paso 1: se envía notificación de chat al destinatario.
+Paso 1: Se envía notificación de chat al destinatario.
