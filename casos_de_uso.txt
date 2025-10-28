@@ -1,4 +1,4 @@
-Caso de Uso UC1: Solitar retiro
+Caso de Uso UC1: Solicitar retiro
 
 Actor Principal: Hogar
 
@@ -13,36 +13,31 @@ Postcondiciones: Queda registro del retiro y su ubicación en la base de datos, 
 Escenario principal de éxito:
 Paso 1: Hogar solicita retiro
 Paso 2: Ejecutar caso de uso "ingresar ubicación".
-Paso 3: Hogar ingresa fecha y dirección de su retiro (además de indicaciones extra de ser necesarias).
-Paso 4: Sistema ejecuta caso de uso "validar rutas".
-Paso 5: Sistema ejecuta caso de uso "enviar notificación".
 
 Flujos alternativos:
-Paso 1-3': -Si el hogar lo desea, puede cancelar la solicitud.
-Paso 4':   -Los datos ingresados no son válidos (dirección que no existe, zona fuera del límite, envío erróneo de datos).
-           -El sistema los solicita de nuevo hasta que sea exitoso o hasta que el hogar deje de intentar.
+Paso 1-2': - Si el hogar lo desea, puede cancelar la solicitud.
 
 
 
 
 
-Caso de uso UC2: Enviar notificación
+Caso de uso UC2: Ingresar ubicación
 
-Actor principal: Hogar y Conductor.
+Actor principal: Hogar
 
 Actores involucrados e intereses:
-- Hogar: Desea saber el estado de su retiro y de los mensajes del conductor.
-- Conductor: Quiere notificar al hogar que se envió mensaje.
+- Hogar: Desea ingresar la ubicación de donde quiere que recojan su retiro.
 
-Precondiciones: Hogar tiene una ruta validada o el hogar canceló un retiro, o que se haya recibido por lo menos un chat.
+Precondiciones: --
 
-Postcondiciones: Se imprime una notificación en interfaz.
+Postcondiciones: Ubicación enviada a la API para ser validada.
 
 Escenario principal de éxito 1: 
-Paso 1: Se envía notificación a hogar de "solicitud de retiro válida".
+Paso 1: Hogar ingresa ubicación de dónde quiere que se realice el retiro y dar otras indicaciones en caso de que el usuario lo requiera.
+Paso 2: Se ejecuta caso de uso "validar ruta".
 
-Escenario principal de éxito 2:
-Paso 1: Se envía notificación de cancelación de retiro correcta.
+Flujos alternativos:
+Paso 1':   - Los datos ingresados no son válidos (dirección que no existe, zona fuera del límite, envío erróneo de datos).
+           - El sistema solicita los datos de nuevo hasta que sea exitoso o hasta que el hogar deje de intentar.
+           - Cancelar en caso que el hogar lo desee.
 
-Escenario principal de éxito 3:
-Paso 1: Se envía notificación de chat al destinatario.
